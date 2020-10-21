@@ -1,0 +1,22 @@
+
+.add-btn {
+    margin: 20px 0;
+    text-align: right;
+}
+.add-btn .el-button {
+    position: relative;
+    left: 70px;
+}
+.card {
+    margin: 0 0 20px;
+}
+.main-wrap {
+    margin: 0 auto 20px;
+    width: 650px;
+}
+.el-card {
+    margin: 0 auto 20px;
+    padding: 40px 0 0;
+    width: 650px;
+    text-align: left;
+}
