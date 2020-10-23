@@ -8,7 +8,7 @@
       el-form-item(label="Entry:" required  prop="entry")
           el-input(v-model="item.entry", placeholder="Entry Name")
       el-form-item(label="Protocol:" required prop="protocol")
-          el-select(v-model="item.protocol")
+          el-select(v-model="item.protocol" placeholder="Please select protocol")
             el-option(v-for="item in protocols" :key="item" :label="item" :value="item")
       el-form-item(label="Target Port:" required prop="port")
           el-input(v-model="item.port" placeholder="443")

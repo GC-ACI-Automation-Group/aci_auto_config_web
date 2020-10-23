@@ -6,7 +6,7 @@
       el-form-item(label="EPG:" required prop="epg")
         el-input(v-model="item.epg" placeholder="EPG Name")
       el-form-item(label="Bridge Domain:" required prop="bd")
-        el-select(v-model="item.bd")
+        el-select(v-model="item.bd" placeholder="Please select bd")
           el-option(v-for="item in bdList" :key="item.bd" :label="item.bd" :value="item.bd")
   .add-btn
     el-button.el-icon-plus(@click="add")

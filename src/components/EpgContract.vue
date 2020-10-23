@@ -5,12 +5,12 @@
       .item Contract:
       .item Contract Type:
     .line(v-for="(item,index) in list" :key="index")
-      el-select.item(v-model="item.epg")
+      el-select.item(v-model="item.epg" placeholder="Please select epg")
         el-option(v-for="item in epgs" :key="item.epg" :value="item.epg")
-      el-select.item(v-model="item.contract")
+      el-select.item(v-model="item.contract" placeholder="Please select contract")
         el-option(v-for="item in contracts" :key="item.contract" :value="item.contract")
 
-      el-select.item(v-model="item.contract_type")
+      el-select.item(v-model="item.contract_type", placeholder="Please select type")
         el-option(label="provider" value="provider")
         el-option(label="consumer" value="consumer")
     .add-btn
@@ -58,16 +58,19 @@ export default {
     request (data) {
       const xmlhttp = new XMLHttpRequest()
       xmlhttp.open('POST', '/api/config', true)
-      xmlhttp.onload = function (e) {
-        if (this.status === 200) {
+      xmlhttp.send(JSON.stringify(data))
+      xmlhttp.onreadystatechange = () => {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
           this.$confirm('The config file has been generated, Please click download button to download it.', '', {
             distinguishCancelAndClose: true,
             confirmButtonText: 'Download',
             cancelButtonText: 'Cancel'
           })
+            .then(() => {
+              location.href = '/download'
+            })
         }
       }
-      xmlhttp.send(JSON.stringify(data))
     }
   }
 }

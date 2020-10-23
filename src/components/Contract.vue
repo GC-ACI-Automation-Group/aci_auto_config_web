@@ -7,7 +7,7 @@
       el-form-item(label="Contract Subject:" required prop="subject")
         el-input(v-model="item.subject" placeholder="Subject Name")
       el-form-item(label="Filter:" required prop="filter")
-        el-select(v-model="item.filter")
+        el-select(v-model="item.filter" placeholder="Please select filter")
           el-option(
             v-for="item in filters"
             :key="item.filter"
