@@ -1,9 +1,9 @@
 <template lang="pug">
   .main-wrap
     .line
-      .item EPG名称：
-      .item Contract名称：
-      .item EPG与Contract 关系：
+      .item EPG:
+      .item Contract:
+      .item Contract Type:
     .line(v-for="(item,index) in list" :key="index")
       el-select.item(v-model="item.epg")
         el-option(v-for="item in epgs" :key="item.epg" :value="item.epg")
@@ -16,10 +16,10 @@
     .add-btn
       el-button.el-icon-plus(@click="add")
     .btns
-      el-button(@click="$store.commit('changeStep', 'minis')") 上一步
+      el-button(@click="$store.commit('changeStep', 'minis')") Privous
       el-button(
         type="primary"
-        @click="submit") 提交
+        @click="submit") Submit
 </template>
 <script>
 export default {
@@ -57,7 +57,16 @@ export default {
     },
     request (data) {
       const xmlhttp = new XMLHttpRequest()
-      xmlhttp.open('POST', '/api/send', true)
+      xmlhttp.open('POST', '/api/config', true)
+      xmlhttp.onload = function (e) {
+        if (this.status === 200) {
+          this.$confirm('The config file has been generated, Please click download button to download it.', '', {
+            distinguishCancelAndClose: true,
+            confirmButtonText: 'Download',
+            cancelButtonText: 'Cancel'
+          })
+        }
+      }
       xmlhttp.send(JSON.stringify(data))
     }
   }

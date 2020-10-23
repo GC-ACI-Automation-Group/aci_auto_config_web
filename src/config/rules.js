@@ -1,5 +1,5 @@
 const EnglishName = function (rule, value, callback) {
-  if (value.match(/\w+/)) {
+  if (value.match(/[_a-zA-Z]\w*/)) {
     callback()
   } else {
     callback(new Error('Only English is allowed'))
@@ -7,87 +7,87 @@ const EnglishName = function (rule, value, callback) {
 }
 
 const IP = function (rule, value, callback) {
-  if (value.match(/(\d{1,3}.){3}\d{1,3}/)) {
+  if (value.match(/\d{1,3}(.\d{1,3}){3}/)) {
     callback()
   } else {
-    callback(new Error('不是有效的ip地址'))
+    callback(new Error('Not a valid ip address'))
   }
 }
 export default {
   tenant: {
     name: [
-      { required: true, message: 'tenant', trigger: 'blur' },
+      { required: true, message: 'Tenant:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   vrf: {
     name: [
-      { required: true, message: '请输入Vrf名称', trigger: 'blur' },
+      { required: true, message: 'VRF:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   bridge: {
     bd: [
-      { required: true, message: '请输入BD名称', trigger: 'blur' },
+      { required: true, message: 'Bridge Domain:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     gateway: [
-      { required: true, message: '请输入gateway', trigger: 'blur' },
+      { required: true, message: 'Gateway:', trigger: 'blur' },
       { validator: IP, trigger: 'blur' }
     ],
     mask: [
-      { required: true, message: 'Prefix', trigger: 'blur' },
+      { required: true, message: 'Prefix Length:', trigger: 'blur' },
       {
         validator (rule, value, callback) {
-          if (Number(value) && value >= 0 && value <= 32) {
+          if (Number(value) && value > 0 && value < 32) {
             callback()
             return
           }
-          callback(new Error('0-32'))
+          callback(new Error('Invalid prefix length.'))
         },
         trigger: 'blur'
       }
     ],
     scope: [
-      { required: true, message: '请选择范围', trigger: 'blur' }
+      { required: true, message: 'Scope:', trigger: 'blur' }
     ]
   },
   ap: {
     name: [
-      { required: true, message: '请输入ap名称', trigger: 'blur' },
+      { required: true, message: 'Application Profile:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   epg: {
     epg: [
-      { required: true, message: 'epg', trigger: 'blur' },
+      { required: true, message: 'EPG:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     bd: [
-      { required: true, message: 'bridge domain', trigger: 'blur' },
+      { required: true, message: 'Bridge Domain:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   filter: {
     filter: [
-      { required: true, message: 'filter', trigger: 'blur' },
+      { required: true, message: 'Filter:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     entry: [
-      { required: true, message: 'entry', trigger: 'blur' },
+      { required: true, message: 'Entry:', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     protocol: [
-      { required: true, message: 'protocol', trigger: 'blur' }
+      { required: true, message: 'Protocol:', trigger: 'blur' }
     ],
     port: [
-      { required: true, message: 'port', trigger: 'blur' },
+      { required: true, message: 'Port:', trigger: 'blur' },
       {
         validator (rule, value, callback) {
           if (Number(value) && value >= 0 && value < 65536) {
             callback()
           } else {
-            callback(new Error('不是一个有效的端口号'))
+            callback(new Error('Invalid a port number.'))
           }
         },
         trigger: 'blur'
@@ -97,13 +97,13 @@ export default {
   },
   contract: {
     contract: [
-      { required: true, message: '请输入合同名称', trigger: 'blur' }
+      { required: true, message: 'Contract:', trigger: 'blur' }
     ],
     subject: [
-      { required: true, message: '请输入subject名称', trigger: 'blur' }
+      { required: true, message: 'Subject:', trigger: 'blur' }
     ],
     filter: [
-      { required: true, message: '请选择filter名称', trigger: 'blur' }
+      { required: true, message: 'Filter:', trigger: 'blur' }
     ]
   }
 }

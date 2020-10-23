@@ -2,11 +2,11 @@
 .main-wrap
   el-card.card(v-for="(item,index) in model" :key="index")
     el-form(:rules="rules" :ref="`form${index}`" :model="item" label-width="280px")
-      el-form-item(label="Contract 名称：" required prop="contract")
-        el-input(v-model="item.contract")
-      el-form-item(label="Contract Subject 名称：" required prop="subject")
-        el-input(v-model="item.subject")
-      el-form-item(label="过滤名称：" required prop="filter")
+      el-form-item(label="Contract:" required prop="contract")
+        el-input(v-model="item.contract" placeholder="Contract Name")
+      el-form-item(label="Contract Subject:" required prop="subject")
+        el-input(v-model="item.subject" placeholder="Subject Name")
+      el-form-item(label="Filter:" required prop="filter")
         el-select(v-model="item.filter")
           el-option(
             v-for="item in filters"
@@ -15,10 +15,10 @@
   .add-btn
     el-button.el-icon-plus(@click="add")
   .btns
-    el-button(@click="$store.commit('changeStep', 'minis')") 上一步
+    el-button(@click="$store.commit('changeStep', 'minis')") Previous
     el-button(
       type="primary"
-      @click="next") 下一步
+      @click="next") Next
 
 </template>
 <script>

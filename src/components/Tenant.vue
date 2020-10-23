@@ -1,12 +1,12 @@
 <template lang="pug">
 .main-wrap
   el-form(inline :rules="rules" ref="form" :model="model")
-    el-form-item(label="输入租户名称" required prop="name")
-      el-input(v-model="model.name")
+    el-form-item(label="Tenant:" required prop="name")
+      el-input(v-model="model.name" placeholder="Tenant Name")
   .btns
     el-button(
       type="primary"
-      @click="next") 下一步
+      @click="next") Next
 </template>
 <script>
 import Rules from '@/config/rules'
