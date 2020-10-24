@@ -29,8 +29,8 @@ WORKDIR /ACI
 
 COPY --from=builder /root/dist dist
 
-COPY 05_aci_deploy_app.yml requirements.txt web.py ./
+COPY 05_aci_deploy_app.yml requirements.txt web.py scripts/run.sh ./
 
 RUN pip3 install --no-cache-dir --compile -r requirements.txt
 
-CMD ["python3", "web.py"]
+CMD ["./run.sh"]
