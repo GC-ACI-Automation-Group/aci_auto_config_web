@@ -7,6 +7,7 @@ import tempfile
 import yaml
 from ansible.cli.playbook import PlaybookCLI
 from flask import Flask, send_from_directory, request, send_file
+from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__, static_folder='dist')
 
@@ -38,6 +39,9 @@ def save_config_fille(data):
 
 def apply_config(json_data):
     config_file = save_config_fille(json_data)
+
+    app.logger.info('user config file: %s', config_file)
+
     args = [' ',
             '-i', '/inventory',
             '05_aci_deploy_app.yml',
@@ -55,11 +59,12 @@ def recieve_data():
     data = request.get_data()
     data = json.loads(data)
 
-    print(data)
+    app.logger.info(data)
 
     apply_result = apply_config(data)
 
     return 'success' if apply_result else 'failed'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    server = WSGIServer(('0.0.0.0', 80), app)
+    server.serve_forever()
