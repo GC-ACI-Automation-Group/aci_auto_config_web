@@ -59,15 +59,36 @@ export default {
       const xmlhttp = new XMLHttpRequest()
       xmlhttp.open('POST', '/api/config', true)
       xmlhttp.send(JSON.stringify(data))
+      const loading = this.$loading({
+        lock: true,
+        text: 'Applying to server...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
       xmlhttp.onreadystatechange = () => {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-          this.$confirm('The config file has been generated, Please click download button to download it.', '', {
+        if (xmlhttp.readyState === 4) {
+          loading.close()
+          const success = xmlhttp.status === 200 && xmlhttp.responseText === 'success'
+          let msg = 'Congratulation, You have complete the config.'
+          if (!success) {
+            msg = 'failed'
+          }
+          this.$confirm(msg, '', {
             distinguishCancelAndClose: true,
-            confirmButtonText: 'Download',
-            cancelButtonText: 'Cancel'
+            confirmButtonText: 'Confirm',
+            showCancelButton: false,
+            showClose: false,
+            type: success ? 'success' : 'error',
+            center: true
           })
             .then(() => {
-              location.href = '/download'
+              if (success) {
+                location.href = '/'
+              }
+            }).catch(() => {
+              if (success) {
+                location.href = '/'
+              }
             })
         }
       }

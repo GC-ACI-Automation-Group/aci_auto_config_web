@@ -1,2 +1,4 @@
+ansible==2.10.1
+ansible-base==2.10.2
 Flask==1.1.2
 PyYAML==5.1.2

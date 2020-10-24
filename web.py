@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 import os
-import yaml
 import json
+import tempfile
 
+import yaml
+from ansible.cli.playbook import PlaybookCLI
 from flask import Flask, send_from_directory, request, send_file
 
-app = Flask(__name__, static_folder='')
-
-config_file = 'aci_config.yml'
+app = Flask(__name__, static_folder='dist')
 
 @app.route('/')
 def index():
@@ -16,28 +16,50 @@ def index():
 
 @app.route('/js/<path:path>')
 def send_js(path):
-    return send_from_directory('js', path)
+    return send_from_directory('dist/js', path)
 
 @app.route('/css/<path:path>')
 def send_css(path):
-    return send_from_directory('css', path)
+    return send_from_directory('dist/css', path)
 
 @app.route('/fonts/<path:path>')
 def send_font(path):
-    return send_from_directory('fonts', path)
+    return send_from_directory('dist/fonts', path)
+
+def save_config_fille(data):
+    tf = tempfile.NamedTemporaryFile(suffix='.yml', prefix='aci_config_', delete=False)
+    tf.close()
+
+    with open(tf.name, 'w') as f:
+        yaml.dump(data, f)
+        f.flush()
+
+    return tf.name
+
+def apply_config(json_data):
+    config_file = save_config_fille(json_data)
+    args = [' ',
+            '-i', '/inventory',
+            '05_aci_deploy_app.yml',
+            '-e', '@{}'.format(config_file)]
+
+    playbook = PlaybookCLI(args)
+
+    exit_code = playbook.run()
+    os.unlink(config_file)
+
+    return exit_code == 0
 
 @app.route('/api/config', methods=['POST'])
 def recieve_data():
     data = request.get_data()
     data = json.loads(data)
-    with open(config_file, 'w') as f:
-        yaml.dump(data, f)
-    print(request.get_data())
-    return 'success'
 
-@app.route('/download')
-def download_config():
-    return send_file(config_file, as_attachment=True)
+    print(data)
+
+    apply_result = apply_config(data)
+
+    return 'success' if apply_result else 'failed'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)

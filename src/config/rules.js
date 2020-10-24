@@ -16,27 +16,27 @@ const IP = function (rule, value, callback) {
 export default {
   tenant: {
     name: [
-      { required: true, message: 'Tenant:', trigger: 'blur' },
+      { required: true, message: 'Please input tenant name', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   vrf: {
     name: [
-      { required: true, message: 'VRF:', trigger: 'blur' },
+      { required: true, message: 'Please input VRF name', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   bridge: {
     bd: [
-      { required: true, message: 'Bridge Domain:', trigger: 'blur' },
+      { required: true, message: 'Please input bridge domain name', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     gateway: [
-      { required: true, message: 'Gateway:', trigger: 'blur' },
+      { required: true, message: 'Please input Gateway', trigger: 'blur' },
       { validator: IP, trigger: 'blur' }
     ],
     mask: [
-      { required: true, message: 'Prefix Length:', trigger: 'blur' },
+      { required: true, message: 'Please input prefix length', trigger: 'blur' },
       {
         validator (rule, value, callback) {
           if (Number(value) && value > 0 && value < 32) {
@@ -49,39 +49,39 @@ export default {
       }
     ],
     scope: [
-      { required: true, message: 'Scope:', trigger: 'blur' }
+      { required: true, message: 'Please select scope', trigger: 'blur' }
     ]
   },
   ap: {
     name: [
-      { required: true, message: 'Application Profile:', trigger: 'blur' },
+      { required: true, message: 'Please input application profile name', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   epg: {
     epg: [
-      { required: true, message: 'EPG:', trigger: 'blur' },
+      { required: true, message: 'Please input EPG name', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     bd: [
-      { required: true, message: 'Bridge Domain:', trigger: 'blur' },
+      { required: true, message: 'Please select bridge domain', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ]
   },
   filter: {
     filter: [
-      { required: true, message: 'Filter:', trigger: 'blur' },
+      { required: true, message: 'Please input filter name', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     entry: [
-      { required: true, message: 'Entry:', trigger: 'blur' },
+      { required: true, message: 'Please input entry name', trigger: 'blur' },
       { validator: EnglishName, trigger: 'blur' }
     ],
     protocol: [
-      { required: true, message: 'Protocol:', trigger: 'blur' }
+      { required: true, message: 'Please select a protocol', trigger: 'blur' }
     ],
     port: [
-      { required: true, message: 'Port:', trigger: 'blur' },
+      { required: true, message: 'Please input port number', trigger: 'blur' },
       {
         validator (rule, value, callback) {
           if (Number(value) && value >= 0 && value < 65536) {
@@ -97,13 +97,13 @@ export default {
   },
   contract: {
     contract: [
-      { required: true, message: 'Contract:', trigger: 'blur' }
+      { required: true, message: 'Please input contract name', trigger: 'blur' }
     ],
     subject: [
-      { required: true, message: 'Subject:', trigger: 'blur' }
+      { required: true, message: 'Please input contract subject name', trigger: 'blur' }
     ],
     filter: [
-      { required: true, message: 'Filter:', trigger: 'blur' }
+      { required: true, message: 'Please select filter', trigger: 'blur' }
     ]
   }
 }
