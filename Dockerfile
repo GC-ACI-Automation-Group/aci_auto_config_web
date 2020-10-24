@@ -2,7 +2,7 @@ FROM node:12 AS builder
 
 WORKDIR /root/
 
-COPY . .
+COPY front_end .
 
 RUN yarn install && \
     yarn build
