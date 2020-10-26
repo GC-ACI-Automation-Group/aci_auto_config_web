@@ -26,7 +26,7 @@ How To Run The Website
 ===
 
 ```bash
-docker run -d -p <host_port>:80 -v </path/to/inventory>:/inventory containers.cisco.com/jisi/aci_auto_config_web
+docker run -d -p <host_port>:80 -v </path/to/inventory>:/inventory jinyuansi/aci_auto_config_web
 ```
 
 You Can Build It By Yourself With The Following CMD
