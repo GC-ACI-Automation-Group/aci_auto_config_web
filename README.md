@@ -1,3 +1,26 @@
+Cisco ACI Auto Config Web App
+===
+ACI Automation Configuration Web App:
+
+Container(Web App + Python3 + Ansible2.10.1)= Cisco ACI Automation Configuration Web App
+
+
+Requirements
+===
+1.Cisco APIC 4.1+
+
+2.Docker Desktop
+
+3.txt file editor
+
+This is the components you need to use this app in your local environment.
+
+For the codes, please check:https://github.com/GC-ACI-Automation-Group/aci_auto_config_web
+
+Description
+===
+This project is a web app built from a container which used to complete the configuration of tenants in Cisco APIC automatically with simple navigation flow instead of clicking many different menu buttons under the APIC GUI.
+
 How To Run The Website
 ===
 
