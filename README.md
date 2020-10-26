@@ -4,6 +4,7 @@ ACI Automation Configuration Web App:
 
 Container(Web App + Python3 + Ansible2.10.1)= Cisco ACI Automation Configuration Web App
 
+[![Build Status](https://travis-ci.com/GC-ACI-Automation-Group/aci_auto_config_web.svg?branch=main)](https://travis-ci.com/GC-ACI-Automation-Group/aci_auto_config_web)
 
 Requirements
 ===

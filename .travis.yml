@@ -1,0 +1,11 @@
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker build -t aci_auto_config_web .
+        - docker images
+        - docker tag aci_auto_config_web $DOCKER_USERNAME/aci_auto_config_web:$(git rev-parse --short HEAD)
+        - docker push $DOCKER_USERNAME/aci_auto_config_web:$(git rev-parse --short HEAD)
