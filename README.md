@@ -26,7 +26,9 @@ For the codes, please check:https://github.com/GC-ACI-Automation-Group/aci_auto_
 Description
 ===
 
-This project is a web app built from a container which used to complete the configuration of tenants in Cisco APIC automatically with simple navigation flow instead of clicking many different menu buttons under the APIC GUI.
+Cisco ACI（Application Centric Infrastructure）is an industry leading datacenter SDN solution, it can automatically deploy application policy to infrastructure, make customer’s datacenter network more flex and agile. But it is a little difficult to new user familiar with APIC configuration GUI.
+
+We are planning to develop an application to help our new ACI customer very quickly and easily to deploy their ACI fabric. Our application is built on the top to container, so customer can get the identical environment at anytime and anywhere, it can deploy very quickly. After that customer can use this web application configuration policy on Cisco APIC automatically with one simple navigation flow instead of clicking many different menu buttons under the APIC GUI. It will make ACI more friendly to new user.
 
 How it works
 ===
