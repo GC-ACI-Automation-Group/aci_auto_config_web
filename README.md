@@ -76,7 +76,8 @@ Step 2. To Access The Web App With Browser For Your APIC Configuration:
 
 http://localhost:<host_port>
 
-![Image text](https://raw.githubusercontent.com/GC-ACI-Automation-Group/aci_auto_config_web/main/05_36_30.jpg)
+![aci_auto_config_web](images/05_36_30.jpg)
+
 
 [inventory] File Content Example
 ===
