@@ -76,7 +76,7 @@ Step 2. To Access The Web App With Browser For Your APIC Configuration:
 
 http://localhost:<host_port>
 
-
+![Image text]
 
 [inventory] File Content Example
 ===
