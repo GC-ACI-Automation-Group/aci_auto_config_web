@@ -60,7 +60,7 @@ Step 1, Building The Web App Container:
  
 
  ```bash
- docker run -d -p <your_localhost_port>:80 -v </path/to/inventory>:/inventory jinyuansi/aci_auto_config_web
+ docker run -d -p <your_localhost_port>:80 -v </path/inventory>:/inventory jinyuansi/aci_auto_config_web
  ```
 
  Option 2. To Build & Run The Container By Yourself With The Following CMD
@@ -87,7 +87,7 @@ Step 1, Building The Web App Container:
  4>. run the service
 
  ```bash
- docker run -d -p <your_localhost_port>:80 -v </path/to/inventory>:/inventory aci_auto_config_web
+ docker run -d -p <your_localhost_port>:80 -v </path/inventory>:/inventory aci_auto_config_web
  ```
  
 Step 2. To Access The Web App With Browser For Your APIC Configuration:
