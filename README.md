@@ -14,7 +14,7 @@ Requirements
 
 2. Docker Desktop
 
-3. Following the below contents, to create and save a text file named “inventory” to tell the credentials and ip address/domain name of the APIC, remember the absolute path of the file as we will use it in the later steps.
+3. Following the below contents, to create and save a text file named “inventory” at anywhere you want, which used to store the credentials and ip address/domain name of the APIC you want to configure, remember the absolute path of the file as we will use it in the later steps.
 
 ```bash
 [apic:vars]
