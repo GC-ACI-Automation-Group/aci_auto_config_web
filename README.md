@@ -33,7 +33,7 @@ We are planning to develop an application to help our new ACI customer very quic
 How it works
 ===
 
-![prototype topology](images/prototype_topology.png)
+![prototype topology](images/prototype_topology_new.png)
 
 In order to use this web app, there are two step to do.
 
