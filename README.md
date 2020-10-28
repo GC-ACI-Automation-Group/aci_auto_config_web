@@ -32,6 +32,9 @@ We are planning to develop an application to help our new ACI customer very quic
 
 How it works
 ===
+
+![prototype topology](images/prototype_topology.png)
+
 In order to use this web app, there are two step to do.
 
 Step 1, Building The Web App Container:
