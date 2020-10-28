@@ -82,15 +82,16 @@ http://localhost:<host_port>
 ![aci_auto_config_web](images/05_36_30.jpg)
 
 
-[inventory] File Content Example
+[inventory] File Content Example. 
 ===
+Note: the credentials displayed below is the APIC from DevNet Sandbox always-on lab for your reference!
 
 ```bash
 [apic:vars]
 username=admin #APIC username
-password=passwd #APIC password
+password=ciscopsdt #APIC password
 
 [apic]
-aci.cisco.com #APIC domain name
+sandboxapicdc.cisco.com #APIC domain name
 ```
 
