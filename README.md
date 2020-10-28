@@ -10,13 +10,13 @@ Container(Web App + Python3 + Ansible2.10.1)= Cisco ACI Automation Configuration
 Requirements
 ===
 
-1.Cisco APIC 4.1+
+1. Cisco APIC 4.1+
 
-2.Docker Desktop
+2. Docker Desktop
 
-3.A sample file named inventory to tell the Cisco APIC's crendentials and ip address/domain name (txt format under windows, text format under Mac)
+3. A sample file named “inventory” to tell the Cisco APIC's crendentials and ip address/domain name (txt format under windows, text format under Mac)
 
-4.Git (optional, used to clone container image)
+4. Git (optional, used to clone container image)
 
 This is the components you need to use this app in your local environment.
 
