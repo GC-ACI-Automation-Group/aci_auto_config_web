@@ -50,6 +50,7 @@ In order to use this web app, there are two step to do.
 Note:  
 
    <your_localhost_port> stands for the port of the computer on which the web app will be run, like 80 or 8080.
+   
    </path/inventory> means the absolute path used to store the file named inventory, such as C:/inventory, which means that you stored the inventory file under drive C:
 
 Step 1, Building The Web App Container:
