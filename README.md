@@ -93,7 +93,7 @@ Step 1, Building The Web App Container:
 Step 2. To Access The Web App With Browser For Your APIC Configuration:
 ===
 
-http://localhost:<host_port>
+http://localhost:<your_localhost_port>
 
 ![aci_auto_config_web](images/05_36_30.jpg)
 
