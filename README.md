@@ -14,7 +14,17 @@ Requirements
 
 2. Docker Desktop
 
-3. A sample file named “inventory” to tell the Cisco APIC's crendentials and ip address/domain name (txt format under windows, text format under Mac)
+3. Following the below contents, to create and save a text file named “inventory” to tell the credentials and ip address/domain name of the APIC, remember the absolute path of the file as we will use it in the later steps.
+
+```bash
+[apic:vars]
+username=admin
+password=ciscopsdt
+
+[apic]
+sandboxapicdc.cisco.com
+```
+Note: the credentials displayed above is for the APIC from Cisco DevNet Sandbox always-on lab for your reference and testing!
 
 4. Git (optional, used to clone container image)
 
@@ -35,7 +45,12 @@ How it works
 
 ![prototype topology](images/prototype_topology_new.png)
 
-In order to use this web app, there are two step to do.
+In order to use this web app, there are two step to do. 
+
+Note:  
+
+   <your_localhost_port> stands for the port of the computer on which the web app will be run, like 80 or 8080.
+   </path/inventory> means the absolute path used to store the file named inventory, such as C:/inventory, which means that you stored the inventory file under drive C:
 
 Step 1, Building The Web App Container:
 ===
@@ -44,7 +59,7 @@ Step 1, Building The Web App Container:
  
 
  ```bash
- docker run -d -p <host_port>:80 -v </path/to/inventory>:/inventory jinyuansi/aci_auto_config_web
+ docker run -d -p <your_localhost_port>:80 -v </path/to/inventory>:/inventory jinyuansi/aci_auto_config_web
  ```
 
  Option 2. To Build & Run The Container By Yourself With The Following CMD
@@ -71,7 +86,7 @@ Step 1, Building The Web App Container:
  4>. run the service
 
  ```bash
- docker run -d -p <host_port>:80 -v </path/to/inventory>:/inventory aci_auto_config_web
+ docker run -d -p <your_localhost_port>:80 -v </path/to/inventory>:/inventory aci_auto_config_web
  ```
  
 Step 2. To Access The Web App With Browser For Your APIC Configuration:
@@ -82,16 +97,5 @@ http://localhost:<host_port>
 ![aci_auto_config_web](images/05_36_30.jpg)
 
 
-[inventory] File Content Example. 
-===
-Note: the credentials displayed below is the APIC from DevNet Sandbox always-on lab for your reference!
 
-```bash
-[apic:vars]
-username=admin #APIC username
-password=ciscopsdt #APIC password
-
-[apic]
-sandboxapicdc.cisco.com #APIC domain name
-```
-
+Congratulation to you! Begin your new experience journey in ACI configuration.
